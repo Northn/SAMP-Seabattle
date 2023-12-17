@@ -18,7 +18,7 @@ local sizeof, str, ImVec2, ImVec4 = ffi.sizeof, ffi.string, imgui.ImVec2, imgui.
 
 function defineConstants()
     CONN_HOST = "54.37.139.10"
-	CONN_PORT = "5691"
+    CONN_PORT = 5691
 
     ENTITY_TYPE = {
         X_MARK = 1,

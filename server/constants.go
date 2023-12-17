@@ -10,8 +10,8 @@ const (
 
 // TCP server configuration
 const (
-	CONN_HOST = ""
-	CONN_PORT = "5691"
+	CONN_HOST = "0.0.0.0"
+	CONN_PORT = 5691
 	CONN_TYPE = "tcp"
 )
 

@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	listener, err := net.Listen(CONN_TYPE, fmt.Sprintf("%s:%s", CONN_HOST, CONN_PORT))
+	listener, err := net.Listen(CONN_TYPE, fmt.Sprintf("%s:%d", CONN_HOST, CONN_PORT))
 	if err != nil {
 		log.Panicln(err)
 	}
