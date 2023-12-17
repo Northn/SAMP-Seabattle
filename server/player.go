@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"sync"
 	"time"
 )
 
@@ -17,6 +18,7 @@ const (
 )
 
 type Player struct {
+	mtx                 sync.Mutex
 	remoteAddr          string
 	name                string
 	connectedAt         time.Time
@@ -27,6 +29,8 @@ type Player struct {
 	role                PlayerRoleType
 	securityErrorsCount int
 	revengeRequested    bool
+	lastEventTime       time.Time
+	eventsCount         int
 }
 
 func (pl *Player) built() bool {
@@ -256,6 +260,9 @@ func (pl *Player) securityError(format string, args ...any) {
 }
 
 func (pl *Player) destroy() {
+	pl.mtx.Lock()
+	defer pl.mtx.Unlock()
+
 	if pl.isInRoom() {
 		pl.room.announce(PLAYER_DISCONNECTED, StocPlayerDisconnected{
 			Role: pl.role,

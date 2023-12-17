@@ -19,6 +19,7 @@ const (
 )
 
 type Room struct {
+	mtx              sync.Mutex
 	lastGamestateSet time.Time
 	gamestate        Gamestate
 	uid              string
@@ -186,6 +187,9 @@ func (room *Room) switchTurn() {
 }
 
 func (room *Room) destroy() {
+	room.mtx.Lock()
+	defer room.mtx.Unlock()
+
 	if !room.valid() {
 		return
 	}
