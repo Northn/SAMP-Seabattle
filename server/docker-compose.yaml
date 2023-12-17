@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  seabattle_server:
+    image: seabattle_image
+    container_name: seabattle_server
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "5691:5691"
+    restart: "unless-stopped"
