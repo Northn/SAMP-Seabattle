@@ -286,7 +286,7 @@ function()
                 imgui.CenterText("Отправьте данный ключ приглашения вашему другу:", true)
                 imgui.SetCursorScreenPos(cellAt(1, 8))
                 imgui.SetCursorPosX(imgui.GetWindowSize().x / 2 - (CELL_SIZE.x * 14) / 2)
-                imgui.CenterInputText('##roomUid', roomUidField, CELL_SIZE.x * 14)
+                imgui.CenterInputText('##roomUid', roomUidField, CELL_SIZE.x * 14, imgui.InputTextFlags.ReadOnly)
 
                 imgui.SetCursorScreenPos(cellAt(1, 10))
                 imgui.SetCursorPosX(windowsize.x / 2 - (CELL_SIZE.x * 7) / 2 )
